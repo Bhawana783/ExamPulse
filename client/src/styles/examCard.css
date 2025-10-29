@@ -1,0 +1,19 @@
+/* src/styles/examCard.css */
+.exam-card {
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px;
+  background: var(--white);
+  transition: transform 0.2s;
+}
+
+.exam-card:hover {
+  transform: scale(1.03);
+  border-color: var(--accent);
+}
+.exam-card-title {
+  font-size: 1.5em;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
