@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -10,7 +9,13 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "mongoose": "^8.19.2"
+    "mongoose": "^8.19.2",
+    "puppeteer": "^24.2.1",
+    "cheerio": "^1.0.0",
+    "rss-parser": "^3.13.0",
+    "firebase-admin": "^13.1.0",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2"
   },
   "description": "",
   "directories": {
@@ -19,5 +24,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "module"
 }
