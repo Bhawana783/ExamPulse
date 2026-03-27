@@ -29,11 +29,30 @@ const scrapeExams = async (url) => {
         $('h3, .exam-title, .notice-link').each((i, el) => {
             const name = $(el).text().trim();
             if (name) {
+                const deadline = new Date();
+                deadline.setDate(deadline.getDate() + 60);
                 exams.push({
                     examName: name,
-                    category: 'Competitive', // Default category
-                    officialLink: url,
-                    syllabus: 'Syllabus details pending verification.',
+                    category: 'Competitive',
+                    level: 'National',
+                    country: 'India',
+                    conductingBody: 'Official Exam Authority',
+                    syllabus: [
+                        {
+                            section: 'General',
+                            topics: ['Syllabus details pending verification.'],
+                        },
+                    ],
+                    registration: {
+                        endDate: deadline,
+                        officialApplyUrl: url,
+                    },
+                    officialLinks: [
+                        {
+                            label: 'Official Portal',
+                            url,
+                        },
+                    ],
                 });
             }
         });

@@ -9,6 +9,20 @@ Follow these steps to get the ExamPulse application up and running on your local
 
 ---
 
+## Quick Start (Single Command)
+
+From the project root (`ExamPulse`):
+
+```bash
+npm install
+npm run install:all
+npm run dev
+```
+
+This command runs backend and frontend together.
+
+---
+
 ## Step 1: Backend Setup
 1.  Open a terminal and navigate to the `backend` directory:
     ```bash
@@ -18,9 +32,18 @@ Follow these steps to get the ExamPulse application up and running on your local
     ```bash
     npm install
     ```
-3.  Start the backend server:
+3.  Create env file from example:
     ```bash
-    npm start
+    copy .env.example .env
+    ```
+    For PowerShell:
+    ```powershell
+    Copy-Item .env.example .env
+    ```
+4.  Ensure `MONGO_URI` and `JWT_SECRET` are set in `.env`.
+5.  Start the backend server:
+    ```bash
+    npm run dev
     ```
     The server should now be running at `http://localhost:5000`.
 
@@ -35,11 +58,22 @@ Follow these steps to get the ExamPulse application up and running on your local
     ```bash
     npm install
     ```
-3.  Start the development server:
+3.  Create env file from example:
+    ```bash
+    copy .env.example .env
+    ```
+    For PowerShell:
+    ```powershell
+    Copy-Item .env.example .env
+    ```
+4.  Start the development server:
     ```bash
     npm run dev
     ```
-4.  Open your browser to the URL shown in the terminal (usually `http://localhost:5173`).
+5.  Open your browser to the URL shown in the terminal (usually `http://localhost:5173`).
+
+> [!NOTE]
+> Frontend requests use `VITE_API_URL=/api` and are proxied by Vite to `http://localhost:5000`, so backend and frontend are connected automatically in local development.
 
 ---
 

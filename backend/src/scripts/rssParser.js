@@ -21,12 +21,35 @@ const parseRSS = async (feedUrl) => {
             // Basic heuristic: check if the title contains "exam" or "schedule"
             const title = item.title;
             if (title.toLowerCase().includes('exam') || title.toLowerCase().includes('schedule')) {
+                const inferredDate = item.pubDate ? new Date(item.pubDate) : new Date();
+                const deadline = new Date(inferredDate);
+                deadline.setDate(deadline.getDate() + 45);
+
                 const examData = {
                     examName: title,
-                    category: 'Competitive', // Default category
-                    officialLink: item.link,
-                    syllabus: item.contentSnippet || 'No syllabus description provided.',
-                    examDate: item.pubDate ? new Date(item.pubDate) : null,
+                    category: 'Competitive',
+                    level: 'National',
+                    country: 'India',
+                    conductingBody: feed.title || 'Official Exam Authority',
+                    syllabus: [
+                        {
+                            section: 'Overview',
+                            topics: [item.contentSnippet || 'No syllabus description provided.'],
+                        },
+                    ],
+                    registration: {
+                        endDate: deadline,
+                        officialApplyUrl: item.link,
+                    },
+                    importantDates: {
+                        examDate: inferredDate,
+                    },
+                    officialLinks: [
+                        {
+                            label: 'Official Notice',
+                            url: item.link,
+                        },
+                    ],
                 };
 
                 const existing = await Exam.findOne({ examName: examData.examName });
